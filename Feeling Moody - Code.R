@@ -1137,6 +1137,12 @@ loo_compare(loo_DensePA_pls_DSD, loo_DensePA_DSD,
 
 
 ### PE_1 EWMA ################################################################################################################################################################################################################
+EWMA <- function(alpha, r, EWMA_t_minus_1) {
+  ewma_value <- alpha * r + (1 - alpha) * EWMA_t_minus_1
+  return(ewma_value)
+}
+
+
 PE_1EWMA <- arrange(unique(MoodAndDenseEmo[,c("ID", "exam_num", "PE_1")]), ID)
 PE_1EWMA <- PE_1EWMA[which(!is.na(PE_1EWMA$PE_1)),]
 
